@@ -1,0 +1,16 @@
+C:\Users\HPLaptop\source\repos\ClubWestRFC.Models\obj\Debug\netcoreapp3.1\ClubWestRFC.Models.AssemblyInfoInputs.cache
+C:\Users\HPLaptop\source\repos\ClubWestRFC.Models\obj\Debug\netcoreapp3.1\ClubWestRFC.Models.AssemblyInfo.cs
+C:\Users\HPLaptop\source\repos\ClubWestRFC.Models\bin\Debug\netcoreapp3.1\ClubWestRFC.Models.deps.json
+C:\Users\HPLaptop\source\repos\ClubWestRFC.Models\bin\Debug\netcoreapp3.1\ClubWestRFC.Models.dll
+C:\Users\HPLaptop\source\repos\ClubWestRFC.Models\obj\Debug\netcoreapp3.1\ClubWestRFC.Models.csprojAssemblyReference.cache
+C:\Users\HPLaptop\source\repos\ClubWestRFC.Models\bin\Debug\netcoreapp3.1\ClubWestRFC.Models.pdb
+C:\Users\HPLaptop\source\repos\ClubWestRFC.Models\obj\Debug\netcoreapp3.1\ClubWestRFC.Models.dll
+C:\Users\HPLaptop\source\repos\ClubWestRFC.Models\obj\Debug\netcoreapp3.1\ClubWestRFC.Models.pdb
+C:\Users\HPLaptop\source\repos\clubwestProject\ClubWestRFC.Models\bin\Debug\netcoreapp3.1\ClubWestRFC.Models.deps.json
+C:\Users\HPLaptop\source\repos\clubwestProject\ClubWestRFC.Models\bin\Debug\netcoreapp3.1\ClubWestRFC.Models.dll
+C:\Users\HPLaptop\source\repos\clubwestProject\ClubWestRFC.Models\bin\Debug\netcoreapp3.1\ClubWestRFC.Models.pdb
+C:\Users\HPLaptop\source\repos\clubwestProject\ClubWestRFC.Models\obj\Debug\netcoreapp3.1\ClubWestRFC.Models.csprojAssemblyReference.cache
+C:\Users\HPLaptop\source\repos\clubwestProject\ClubWestRFC.Models\obj\Debug\netcoreapp3.1\ClubWestRFC.Models.AssemblyInfoInputs.cache
+C:\Users\HPLaptop\source\repos\clubwestProject\ClubWestRFC.Models\obj\Debug\netcoreapp3.1\ClubWestRFC.Models.AssemblyInfo.cs
+C:\Users\HPLaptop\source\repos\clubwestProject\ClubWestRFC.Models\obj\Debug\netcoreapp3.1\ClubWestRFC.Models.dll
+C:\Users\HPLaptop\source\repos\clubwestProject\ClubWestRFC.Models\obj\Debug\netcoreapp3.1\ClubWestRFC.Models.pdb

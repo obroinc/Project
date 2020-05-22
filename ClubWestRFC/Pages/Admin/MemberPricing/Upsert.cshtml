@@ -1,0 +1,162 @@
+﻿@page
+@model ClubWestRFC.Pages.Admin.MemberPricing.UpsertModel
+
+
+<form method="post" asp-action="Upsert" enctype="multipart/form-data">
+    <div class="container">
+        <div class="row px-2 mx-2 backgroundWhite border">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @if (Model.MemberpriceObj.Memberprice.Id != 0)
+            {
+                <input type="hidden" asp-for="MemberpriceObj.Memberprice.Id" />
+            }
+
+            <div class="col-12 px-3" style="border-bottom:1px solid #325d88">
+                <h2 class="text-primary">@(Model.MemberpriceObj.Memberprice.Id != 0 ? "Update" : "Create") Member Price</h2>
+            </div>
+
+
+
+
+
+            <div class="col-8 pt-3">
+
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="MemberpriceObj.Memberprice.Name"></label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" asp-for="MemberpriceObj.Memberprice.Name" />
+                        <span class="text-danger" asp-validation-for="MemberpriceObj.Memberprice.Name"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="MemberpriceObj.Memberprice.Price"></label>
+                    </div>
+                    <div class="col-9">
+                        <input class="form-control" asp-for="MemberpriceObj.Memberprice.Price" />
+                        <span class="text-danger" asp-validation-for="MemberpriceObj.Memberprice.Price"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="MemberpriceObj.Memberprice.Description"></label>
+                    </div>
+                    <div class="col-9">
+                        <textarea class="form-control" asp-for="MemberpriceObj.Memberprice.Description" id="txtDesc" style="height:200px;"></textarea>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="MemberpriceObj.Memberprice.image"></label>
+                    </div>
+                    <div class="col-9">
+                        <input text="file" class="form-control" name="files" id="uploadBox" />
+                        @*Validations using JS below*@
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="MemberpriceObj.Memberprice.CategoryId"></label>
+                    </div>
+                    <div class="col-9">
+                        @Html.DropDownListFor(m => m.MemberpriceObj.Memberprice.CategoryId,
+                       Model.MemberpriceObj.CategoryList,
+                       "Please select a category",
+                       new { @class = "form-control" })
+
+                        <span class="text-danger" asp-validation-for="MemberpriceObj.Memberprice.CategoryId"></span>
+                    </div>
+
+                </div>
+
+
+
+                <div class="form-group row">
+                    <div class="col-3">
+                        <label asp-for="MemberpriceObj.Memberprice.MembershipTypeId"></label>
+                    </div>
+                    <div class="col-9">
+                        @Html.DropDownListFor(m => m.MemberpriceObj.Memberprice.MembershipTypeId,
+                       Model.MemberpriceObj.MembershipTypeList,
+                       "Please select a category",
+                       new { @class = "form-control" })
+                        <span class="text-danger" asp-validation-for="MemberpriceObj.Memberprice.MembershipTypeId"></span>
+                    </div>
+                </div>
+
+
+                <div class="form-group row">
+                    <div class="col-9 offset-3">
+                        <div class="row">
+                            <div class="col-6">
+                                @if (Model.MemberpriceObj.Memberprice.Id != 0)
+                                {
+
+                                    <button type="submit" class="btn btn-primary form-control">Update</button>
+                                }
+                                else
+                                {
+                                    <button type="submit" onclick="return ValidateInput()" class="btn btn-primary form-control">Create</button>
+                                }
+
+                            </div>
+
+                            <div class="col-6">
+                                <a asp-page="./Index" class="btn btn-success form-control">Back to List</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            @*Display picture, here if the value is not null it already has been created*@
+
+            @if (Model.MemberpriceObj.Memberprice != null)
+            {
+                <div class="col-4 p-4">
+
+                <img src="@Model.MemberpriceObj.Memberprice.image" width="100%" style="border-radius:4px;border: 1px solid #808080"/>
+                </div>
+
+            }
+
+        </div>
+    </div>
+
+
+
+</form>
+@*Editor For description area*@
+@section Scripts{
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'lists',
+            menubar: 'file edit format'
+        });
+        //Validate if image is not selected
+ function ValidateInput(){
+
+     if (document.getElementById("uploadBox").value == "") {
+         swal("Error", "Please select an image", "error")
+         return true
+     }
+     return true;
+     };
+
+
+    </script>
+
+   
+}
+
