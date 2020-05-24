@@ -57,7 +57,10 @@ namespace ClubWestRFC.Pages.Admin.MemberPricing
 
         public IActionResult OnPost()
         {
+            //fetches path to www root folder
             string webRootPath = _hostingenvironment.WebRootPath;
+
+            //retriving files uploaded from razor page/view
             var files = HttpContext.Request.Form.Files;
         
             if (!ModelState.IsValid)
@@ -71,16 +74,18 @@ namespace ClubWestRFC.Pages.Admin.MemberPricing
                 string fileName = Guid.NewGuid().ToString();
 
                 //Paths for uploads of pictures of different types of memberships
-                var uploads = Path.Combine(webRootPath, @"images\MemberType");
+                var uploads = Path.Combine(webRootPath, @"images\membertypes");
 
                 var extension = Path.GetExtension(files[0].FileName);
+
+                //Create file on the server, the image uploaded is coppied over tothe filestream
 
                 using (var fileStream = new FileStream(Path.Combine(uploads, fileName + extension), FileMode.Create))
                 {
                     files[0].CopyTo(fileStream);
                 }
 
-                MemberpriceObj.Memberprice.image = @"\images\MemberType\" + fileName + extension;
+                MemberpriceObj.Memberprice.image = @"\images\membertypes\" + fileName + extension;
                
 
                 _unitofWork.Memberprice.Add(MemberpriceObj.Memberprice);
@@ -92,7 +97,7 @@ namespace ClubWestRFC.Pages.Admin.MemberPricing
                 var objFromDb = _unitofWork.Memberprice.Get(MemberpriceObj.Memberprice.Id);
 
                 //CHECKING FILE COUNT, IF <0 NEW FILE HAS NOT BEEN UPLOADED, if >0 need to be able to
-                //delete original file and create new one
+                //delete original file and add new one
 
                 if (files.Count > 0)
                 {
@@ -101,7 +106,7 @@ namespace ClubWestRFC.Pages.Admin.MemberPricing
                     string fileName = Guid.NewGuid().ToString();
 
                     //Paths for uploads of pictures of different types of memberships
-                    var uploads = Path.Combine(webRootPath, @"images\MemberType");
+                    var uploads = Path.Combine(webRootPath, @"images\membertypes");
 
                     var extension = Path.GetExtension(files[0].FileName);
 
@@ -121,7 +126,7 @@ namespace ClubWestRFC.Pages.Admin.MemberPricing
                         files[0].CopyTo(fileStream);
                     }
 
-                    MemberpriceObj.Memberprice.image = @"\images\MemberType\" + fileName + extension;
+                    MemberpriceObj.Memberprice.image = @"\images\membertypes\" + fileName + extension;
 
                     //not needed as its inside edit
                     //_unitofWork.Memberprice.Add(MemberpriceObj.Memberprice);

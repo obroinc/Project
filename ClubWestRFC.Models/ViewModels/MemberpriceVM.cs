@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClubWestRFC.Models.ViewModels
 {
-    public class MemberpriceVM
+    class MemberpriceVM
     {
         public Memberprice Memberprice { get; set; }
 

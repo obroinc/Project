@@ -3,7 +3,9 @@
 
 
 <form method="post" asp-action="Upsert" enctype="multipart/form-data">
+
     <div class="container">
+
         <div class="row px-2 mx-2 backgroundWhite border">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             @if (Model.MemberpriceObj.Memberprice.Id != 0)
@@ -12,7 +14,7 @@
             }
 
             <div class="col-12 px-3" style="border-bottom:1px solid #325d88">
-                <h2 class="text-primary">@(Model.MemberpriceObj.Memberprice.Id != 0 ? "Update" : "Create") Member Price</h2>
+                <h2 class="text-primary">@(Model.MemberpriceObj.Memberprice.Id != 0 ? "Update" : "Create") Membership Pricing List</h2>
             </div>
 
 
@@ -57,9 +59,9 @@
                     <div class="col-3">
                         <label asp-for="MemberpriceObj.Memberprice.image"></label>
                     </div>
+                    @*Validations using JS below*@
                     <div class="col-9">
-                        <input text="file" class="form-control" name="files" id="uploadBox" />
-                        @*Validations using JS below*@
+                       <input type="file" class="form-control" name="files" id="uploadBox" />
                     </div>
                 </div>
 
@@ -88,7 +90,7 @@
                     <div class="col-9">
                         @Html.DropDownListFor(m => m.MemberpriceObj.Memberprice.MembershipTypeId,
                        Model.MemberpriceObj.MembershipTypeList,
-                       "Please select a category",
+                       "Please select the Membership Type",
                        new { @class = "form-control" })
                         <span class="text-danger" asp-validation-for="MemberpriceObj.Memberprice.MembershipTypeId"></span>
                     </div>
@@ -99,6 +101,7 @@
                     <div class="col-9 offset-3">
                         <div class="row">
                             <div class="col-6">
+                                @*If not = 0 its an update*@
                                 @if (Model.MemberpriceObj.Memberprice.Id != 0)
                                 {
 
@@ -114,6 +117,7 @@
                             <div class="col-6">
                                 <a asp-page="./Index" class="btn btn-success form-control">Back to List</a>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -126,6 +130,7 @@
                 <div class="col-4 p-4">
 
                 <img src="@Model.MemberpriceObj.Memberprice.image" width="100%" style="border-radius:4px;border: 1px solid #808080"/>
+               
                 </div>
 
             }
@@ -144,12 +149,12 @@
             plugins: 'lists',
             menubar: 'file edit format'
         });
-        //Validate if image is not selected
+        //Validate if image is not selected alert given
  function ValidateInput(){
 
      if (document.getElementById("uploadBox").value == "") {
          swal("Error", "Please select an image", "error")
-         return true
+         return false
      }
      return true;
      };
