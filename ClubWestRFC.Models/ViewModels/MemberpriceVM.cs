@@ -5,13 +5,13 @@ using System.Text;
 
 namespace ClubWestRFC.Models.ViewModels
 {
-    class MemberpriceVM
+   public class MemberpriceVM
     {
         public Memberprice Memberprice { get; set; }
 
         //For  drop down menu
-        public IEnumerable<SelectListItem> CategoryList{ get; set; }
+        public IEnumerable<SelectListItem>CategoryList{ get; set; }
 
-        public IEnumerable<SelectListItem> MembershipTypeList { get; set; }
+        public IEnumerable<SelectListItem>MembershipTypeList { get; set; }
     }
 }
