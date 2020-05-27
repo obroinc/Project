@@ -72,6 +72,7 @@
                     </div>
                     <div class="col-9">
                         @Html.DropDownListFor(m => m.MemberpriceObj.Memberprice.CategoryId,
+                   
                        Model.MemberpriceObj.CategoryList ?? new List<SelectListItem>(),
                        "Please select a category",
                        new { @class = "form-control" })
@@ -123,13 +124,14 @@
                 </div>
             </div>
 
+
             @*Display picture, here if the value is not null it already has been created*@
 
             @if (Model.MemberpriceObj.Memberprice != null)
             {
                 <div class="col-4 p-4">
 
-                <img src="@Model.MemberpriceObj.Memberprice.image" width="100%" style="border-radius:4px;border: 1px solid #808080"/>
+                <img src="@Model.MemberpriceObj.Memberprice.image" width="300" height="300" style="border-radius:4px;border: 1px solid #808080"/>
                
                 </div>
 

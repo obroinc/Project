@@ -18,7 +18,8 @@ function loadList() {
             { "data": "membershipType.name", "width": "15%" },
             {
                 "data": "id",
-                "render": function (data) {
+                "render": function (data)
+                {
                     return ` <div class="text-center">
                                 <a href="/Admin/memberprice/upsert?id=${data}" class="btn btn-success text-white" style="cussor:pointer; width:100px;">
                                     <i class="far fa-edit"></i> Edit
@@ -31,7 +32,7 @@ function loadList() {
             }
         ],
         "language": {
-            "emptyTable": "no data found."
+            "emptyTable": "Sorry no data found."
         },
         "width": "100%",
         "order":[[2,"asc"]]

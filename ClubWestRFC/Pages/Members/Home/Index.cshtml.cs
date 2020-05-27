@@ -30,7 +30,7 @@ namespace ClubWestRFC.Pages.Members.Home
         public void OnGet()
         {
             //
-            MemberpriceList = _unitofWork.Memberprice.GetAll(null, null, "Category, MembershipType");
+            MemberpriceList = _unitofWork.Memberprice.GetAll(null, null, "Category,MembershipType");
 
             CategoryList = _unitofWork.Category.GetAll(null, q => q.OrderBy(c => c.DisplayOrder), null);
         }
