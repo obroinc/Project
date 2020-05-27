@@ -31,5 +31,7 @@ namespace ClubWestRFC.DataAccess.Data.Repository.IRepository
         void Remove(int id);
         //Remove entity if usser passes the entity
         void Remove(T entity);
+
+      
     }
 }

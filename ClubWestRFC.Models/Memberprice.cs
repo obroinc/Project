@@ -20,7 +20,7 @@ namespace ClubWestRFC.Models
         public string image { get; set; }
 
         [Range(1,int.MaxValue, ErrorMessage ="Price is greater than 1 Euro")]
-        public  double Price{ get; set; }
+        public  double Price { get; set; }
 
         //to create a link to the Category table using a foreign key
 
