@@ -1,5 +1,9 @@
 ﻿@page
+@using ClubWestRFC.Utility
 
+@*As there is no model we have a work around with line2 and this if statement*@
+@if(User.IsInRole(SD.AdminRole))
+{
 
 
 <div class="border backgroundWhite container">
@@ -38,6 +42,14 @@
     </table>
 
 </div>
+
+}
+else{
+    <div>
+        <h2 class="text-danger">Access Denied</h2>
+    </div>
+}
+
 @section Scripts{
 
     <script src="~/js/memberprice.js"></script>

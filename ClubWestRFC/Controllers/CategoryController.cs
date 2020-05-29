@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using ClubWestRFC.DataAccess.Data.Repository.IRepository;
+using ClubWestRFC.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,6 +13,9 @@ namespace ClubWestRFC.Controllers
     //
     [Route("api/[controller]")]
     [ApiController]
+
+    
+
     public class CategoryController : Controller
     {
         private readonly IUnitofWork _unitofwork;

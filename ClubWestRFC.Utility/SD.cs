@@ -6,12 +6,12 @@ namespace ClubWestRFC.Utility
 {
     public class SD
     {
-        public static string AdminRole = "Administrator";
+        public const string AdminRole = "Administrator";
 
-        public static string MemberRole = "Member";
+        public const string MemberRole = "Member";
 
-        public static string ShopAdminRole = "Shop Administrator";
+        public const string ShopAdminRole = "Shop Administrator";
 
-        public static string CoachRole = "Coach";
+        public const string CoachRole = "Coach";
     }
 }

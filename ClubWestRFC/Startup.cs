@@ -65,6 +65,26 @@ namespace ClubWestRFC
 
             //Remove Razor pages Added RazorRunTimeCompliation
             //services.AddRazorPages().AddRazorRuntimeCompilation();
+
+
+            /*
+             Microsoft has changed few things with Identity vs DefaultIdentity 
+             which we updated in startup.cs a while ago.
+              Because of which the default paths to login/logout 
+              and access denied fails.
+             */
+
+            services.ConfigureApplicationCookie(options =>
+
+            {
+
+                options.LoginPath = $"/Identity/Account/Login";
+
+                options.LogoutPath = $"/Identity/Account/Logout";
+
+                options.AccessDeniedPath = $"/Identity/Account/AccessDenied";
+
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

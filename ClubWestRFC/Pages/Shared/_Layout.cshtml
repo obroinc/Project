@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using ClubWestRFC.Utility
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -40,6 +42,7 @@
 
                     <partial name="_LoginPartial" />
                     <ul class="navbar-nav flex-grow-1">
+
                         <li class="nav-item">
                             <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
                         </li>
@@ -47,6 +50,7 @@
                             <a class="nav-link text-white" asp-area="" asp-page="/Members/Home/Index">Membership & Club Shop</a>
                         </li>
                         @*Adding Admin drop down list*@
+                        @if (User.IsInRole(SD.AdminRole)) { 
 
                         <li class="nav-item dropdown ">
                             <a class="nav-link text-white dropdown-toggle " href="#" id="navbarDropDown" data-toggle="dropdown">
@@ -61,7 +65,7 @@
                             </div>
 
                         </li>
-
+                        }
 
                     </ul>
                 </div>
