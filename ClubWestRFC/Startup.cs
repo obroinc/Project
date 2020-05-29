@@ -15,6 +15,8 @@ using Microsoft.Extensions.Hosting;
 using ClubWestRFC.DataAccess;
 using ClubWestRFC.DataAccess.Data.Repository;
 using ClubWestRFC.DataAccess.Data.Repository.IRepository;
+using Microsoft.AspNetCore.Identity.UI.Services;
+using ClubWestRFC.Utility;
 
 namespace ClubWestRFC
 {
@@ -35,8 +37,18 @@ namespace ClubWestRFC
             services.AddDbContext<ApplicationDbContext>(options =>
                 options.UseSqlServer(
                     Configuration.GetConnectionString("DefaultConnection")));
-            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+
+            //Allow member to log into account even it has not been confirmed
+
+            services.AddIdentity<IdentityUser, IdentityRole>()
+                //for emails
+                .AddDefaultTokenProviders()                 
                 .AddEntityFrameworkStores<ApplicationDbContext>();
+
+            services.AddSingleton<IEmailSender, EmailSender >();
+
+
+
 
             //adding Iunitof and Unit of work to project so it can used by contollers
             services.AddScoped<IUnitofWork, UnitofWork>();

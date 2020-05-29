@@ -21,7 +21,7 @@ namespace ClubWestRFC.DataAccess.Data.Repository
             Category = new CategoryRespository(_db);
             MembershipType = new MembershipTypeRepository(_db);
             Memberprice = new MemberpriceRepository(_db);
-
+            ApplicationUser = new ApplicationRespository(_db);
 
 
         }
@@ -31,6 +31,8 @@ namespace ClubWestRFC.DataAccess.Data.Repository
         public IMembershipTypeRepository MembershipType { get; private set; }
 
         public IMemberpriceRepository Memberprice { get; set; }
+
+        public IApplicationRepository ApplicationUser { get; set; }
 
         public void Dispose()
         {

@@ -14,6 +14,8 @@ namespace ClubWestRFC.DataAccess.Data.Repository.IRepository
         IMembershipTypeRepository MembershipType { get; }
 
         IMemberpriceRepository Memberprice { get; }
+
+        IApplicationRepository ApplicationUser { get; }
         void Save();
 
     }
