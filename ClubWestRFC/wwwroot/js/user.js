@@ -38,7 +38,7 @@ function loadList() {
                                 </a></div>`;
                     }
 
-                }, "width": "30%"
+                }, "width": "20%"
             }
         ],
         "language": {

@@ -31,6 +31,8 @@ namespace ClubWestRFC.DataAccess
         //to add addional properties to indentity db
         public DbSet<ApplicationUser>ApplicationUser  { get; set; }
 
+        public DbSet<ShoppingCart> ShoppingCart { get; set; }
+
         //to access Type of Membership using dbContext application
         //  public DbSet<Models.ViewModels.MemberType> MemberType{ get; set; }
         // public DbSet<MemberType1> MemberType1 { get; set; }
