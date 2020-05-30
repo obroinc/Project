@@ -32,6 +32,7 @@ namespace ClubWestRFC.Models
         [ForeignKey("ApplicationUserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 
+
         [Range(1,10, ErrorMessage ="Please pick between 1 and 10")]
         public int Count { get; set; }
 

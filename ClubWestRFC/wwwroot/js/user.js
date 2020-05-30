@@ -16,7 +16,7 @@ function loadList() {
             { "data": "email", "width": "15%" },
             { "data": "phoneNumber", "width": "15%" },
             { "data": "fullNameFamily1", "width": "15%" },
-            { "data": "dOBFamily1", "width": "15%" },
+       
 
             {
                 "data": { id: "id", lockoutEnd: "lockoutEnd" },

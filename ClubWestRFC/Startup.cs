@@ -45,7 +45,7 @@ namespace ClubWestRFC
                 .AddDefaultTokenProviders()                 
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-           // services.AddSingleton<IEmailSender, EmailSender>();
+           services.AddSingleton<IEmailSender, EmailSender>();
 
 
 
