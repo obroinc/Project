@@ -15,7 +15,9 @@ namespace ClubWestRFC.DataAccess.Data.Repository.IRepository
 
         IMemberpriceRepository Memberprice { get; }
 
-        IApplicationRepository ApplicationUser { get; }
+        IApplicationUserRepository ApplicationUser { get; }
+
+        IShoppingCartRepository ShoppingCart { get; }
         void Save();
 
     }

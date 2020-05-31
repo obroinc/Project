@@ -55,6 +55,7 @@ namespace ClubWestRFC
 
 
             //Adding sesion for storing shopping cart items, timespout after 10 minutes
+
             services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(10);
@@ -62,7 +63,7 @@ namespace ClubWestRFC
                 options.Cookie.IsEssential = true;
             });
 
-
+            
             //added MVC and disables endpoints
             services.AddMvc(options=>options.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);

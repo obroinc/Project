@@ -18,6 +18,6 @@ namespace ClubWestRFC.Utility
 
         //For shopping cart Sessions
 
-        public const string ShoppingCart = "ShoppingCart";
+       public const string ShoppingCart = "ShoppingCart";
     }
 }

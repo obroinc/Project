@@ -7,6 +7,15 @@
 
 <div class="">
     <form method="post">
+        @*to ensure memberpris id is recorded in database*@
+        <input type="hidden" asp-for="ShoppingCartObj.MemberpriceId"/>
+        @*To display error message*@
+
+        <div asp-validation-summary="ModelOnly"class="text-danger">
+
+        </div>
+
+
         <div class="container backgroundWhite">
             <div class="card">
                 <div class="card-header bg-light text-light ml-0 row container">
@@ -28,9 +37,11 @@
                                         <span class="badge badge-dark">@Model.ShoppingCartObj.Memberprice.MembershipType.Name</span>
                                         <h3 class="text-success"></h3>
 
-                                        <p class="text-secondary">@Html.Raw(Model.ShoppingCartObj.Memberprice.Description)</p>
+                                        <p class="text-secondary">@Html.Raw(Model.ShoppingCartObj.Memberprice.Description)</p>   
+                                                                 
 
                                         <h5>Please choose how many you would like to buy</h5>
+
                                         <div class="row py-4">
                                             <div class="col-2"><label asp-for="ShoppingCartObj.Count" class="h3"></label></div>
                                             <div class="col-10"> <input type="text" asp-for="ShoppingCartObj.Count" class="form-control rounded" height="40px"/> </div>

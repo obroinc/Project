@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ClubWestRFC.DataAccess.Data.Repository.IRepository
 {
-    public interface IApplicationRepository:IRepository<ApplicationUser>
+    public interface IApplicationUserRepository:IRepository<ApplicationUser>
     {
 
     }

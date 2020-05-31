@@ -1,4 +1,9 @@
 ﻿//js for google map on home page
+//$(document).ready(function () {
+  //  loadScipt();
+
+//});
+
 function init() {
     var mapOptions =
     {
