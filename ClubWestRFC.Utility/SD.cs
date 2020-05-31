@@ -13,5 +13,11 @@ namespace ClubWestRFC.Utility
         public const string ShopAdminRole = "Shop Administrator";
 
         public const string CoachRole = "Coach";
+
+
+
+        //For shopping cart Sessions
+
+        public const string ShoppingCart = "ShoppingCart";
     }
 }

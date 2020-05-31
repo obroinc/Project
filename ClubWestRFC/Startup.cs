@@ -54,6 +54,13 @@ namespace ClubWestRFC
             services.AddScoped<IUnitofWork, UnitofWork>();
 
 
+            //Adding sesion for storing shopping cart items, timespout after 10 minutes
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(10);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
 
             //added MVC and disables endpoints
@@ -104,7 +111,7 @@ namespace ClubWestRFC
 
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
 
             //NOT needed
             //app.UseRouting();
