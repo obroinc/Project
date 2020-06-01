@@ -18,6 +18,10 @@ namespace ClubWestRFC.DataAccess.Data.Repository.IRepository
         IApplicationUserRepository ApplicationUser { get; }
 
         IShoppingCartRepository ShoppingCart { get; }
+        IOrderDetailsRepository OrderDetails { get; }
+
+        IOrderHeaderRepository OrderHeader { get; }
+
         void Save();
 
     }

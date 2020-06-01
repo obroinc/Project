@@ -23,6 +23,8 @@ namespace ClubWestRFC.DataAccess.Data.Repository
             Memberprice = new MemberpriceRepository(_db);
             ApplicationUser = new ApplicationUserRespository(_db);
             ShoppingCart = new ShoppingCartRepository(_db);
+            OrderDetails = new OrderDetailsRepository(_db);
+            OrderHeader = new OrderHeaderRepository(_db);
 
         }
         //setting inside constructor, private so it is not set out of this
@@ -35,6 +37,11 @@ namespace ClubWestRFC.DataAccess.Data.Repository
         public IApplicationUserRepository ApplicationUser { get; set; }
 
         public IShoppingCartRepository ShoppingCart{ get; set; }
+
+        public IOrderDetailsRepository OrderDetails{ get; set; }
+
+        public IOrderHeaderRepository OrderHeader { get; set; }
+
 
         public void Dispose()
         {

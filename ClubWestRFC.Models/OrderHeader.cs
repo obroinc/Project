@@ -26,12 +26,12 @@ namespace ClubWestRFC.Models
         public double OrderTotal { get; set; }
 
         [Required]
-        [Display(Name = "Time for colecting Club Merchadise")]
+        [Display(Name = "Time for collecting Club Merchadise")]
         public DateTime PickUpTime { get; set; }
 
         [Required]
         [NotMapped]
-        [Display(Name = "Date for colecting Club Merchadise")]
+        [Display(Name = "Date for collecting Club Merchadise")]
         public DateTime PickUpDate { get; set; }
 
         public string Status { get; set; }
