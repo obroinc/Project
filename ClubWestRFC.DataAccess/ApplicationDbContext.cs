@@ -33,6 +33,9 @@ namespace ClubWestRFC.DataAccess
 
         public DbSet<ShoppingCart> ShoppingCart{ get; set; }
 
+        public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet <OrderHeader>OrderHeader { get; set; }
+
         //to access Type of Membership using dbContext application
         //  public DbSet<Models.ViewModels.MemberType> MemberType{ get; set; }
         // public DbSet<MemberType1> MemberType1 { get; set; }

@@ -26,7 +26,6 @@
 
 
   <ItemGroup>
-    <Folder Include="Pages\Members\Cart\" />
     <Folder Include="wwwroot\Images\membertypes\" />
   </ItemGroup>
 
