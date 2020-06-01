@@ -5,177 +5,199 @@
     ViewData["Title"] = "Register";
 }
 
-    <form method="post" autocomplete="off" asp-route-returnUrl="@Model.ReturnUrl" >
+<form method="post" autocomplete="off" asp-route-returnUrl="@Model.ReturnUrl">
 
-        <div class="py-4 my-4">
-            <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="py-4 my-4">
+        <div asp-validation-summary="All" class="text-danger"></div>
 
-            <div class="row form group">
-                <div class="col-8 offset-2">
-                    <div class="card">
+        <div class="row form group">
+            <div class="col-8 offset-2">
+                <div class="card">
 
-                        <div class="card-body px-lg-5 pt-4">
+                    <div class="card-body px-lg-5 pt-4">
 
-                            <h3 class="col-12 text-success text-center py-4">
-                                <strong>Sign Up</strong>
-                            </h3>
-                            <br />
+                        <h3 class="col-12 text-success text-center py-4">
+                            <strong>Sign Up</strong>
+                        </h3>
+                        <br />
 
-                            <div class="form-row py-2">
-                                <div class="col">
-                                    <div>
-                                        <input type="text" asp-for="Input.FirstName" autocomplete="off" placeholder="First Name" class="form-control" />
-                                        <span asp-validation-for="Input.FirstName" class="text-danger"></span>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div>
-                                        <input type="text" asp-for="Input.LastName" autocomplete="off" placeholder="Second Name" class="form-control" />
-                                        <span asp-validation-for="Input.LastName" class="text-danger"></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="py-2">
+                        <div class="form-row py-2">
+                            <div class="col">
                                 <div>
-                                    <input type="text" asp-for="Input.PhoneNumber" autocomplete="off" placeholder="Phone Number: 086 1234567" class="form-control" />
-                                    <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                                    <input type="text" asp-for="Input.FirstName" autocomplete="off" placeholder="First Name" class="form-control" />
+                                    <span asp-validation-for="Input.FirstName" class="text-danger"></span>
                                 </div>
                             </div>
-                            <div class="py-2">
+
+                            <div class="col">
                                 <div>
-                                    <input type="email" asp-for="Input.Email" autocomplete="off" placeholder="Email" class="form-control" />
-                                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                                    <input type="text" asp-for="Input.LastName" autocomplete="off" placeholder="Second Name" class="form-control" />
+                                    <span asp-validation-for="Input.LastName" class="text-danger"></span>
                                 </div>
-                            </div>
-
-                            <div class="py-2">
-                                <div>
-                                    <input type="password" asp-for="Input.Password" autocomplete="off" placeholder="Password" class="form-control" />
-                                    <span asp-validation-for="Input.Password" class="text-danger"></span>
-                                </div>
-                            </div>
-
-                            <div class="py-2">
-                                <div>
-                                    <input type="password" asp-for="Input.ConfirmPassword " autocomplete="off" placeholder="Please Confirm Password" class="form-control" />
-                                    <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
-                                </div>
-                            </div>
-                            <div> <h4>Please fill in Player Details</h4></div>
-                            <div class="form-row py-2">
-                                <div class="col">
-                                    <div>
-                                        <input type="text" asp-for="Input.FirstNameFamily1" autocomplete="off" placeholder="First Player's First Name " class="form-control" />
-                                        <span asp-validation-for="Input.FirstNameFamily1" class="text-danger"></span>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div>
-                                        <input type="text" asp-for="Input.LastNameFamily1" autocomplete="off" placeholder="First Player's Second Name" class="form-control" />
-                                        <span asp-validation-for="Input.LastNameFamily1" class="text-danger"></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="py-2">
-                                <div>
-                                    <input type="datetime" asp-for="Input.DOBFamily2" autocomplete="off" placeholder="dd-mm-yyyy" class="form-control" />
-                                    <span asp-validation-for="Input.DOBFamily1" class="text-danger"></span>
-                                </div>
-
-                            </div>
-
-                            <div class="form-row py-2">
-                                <div class="col">
-                                    <div>
-                                        <input type="text" asp-for="Input.FirstNameFamily2" autocomplete="off" placeholder="Second Player's First Name" class="form-control" />
-                                        <span asp-validation-for="Input.FirstNameFamily2" class="text-danger"></span>
-                                    </div>
-                                </div>
-
-                                <div class="col">
-                                    <div>
-                                        <input type="text" asp-for="Input.LastNameFamily2" autocomplete="off" placeholder="Second Player's Second Name" class="form-control" />
-                                        <span asp-validation-for="Input.LastNameFamily2" class="text-danger"></span>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="py-2">
-                                <div>
-                                    <input type="datetime" asp-for="Input.DOBFamily2" autocomplete="off" placeholder="dd-mm-yyyy" class="form-control" />
-                                    <span asp-validation-for="Input.DOBFamily2" class="text-danger"></span>
-                                </div>
-                            </div>
-
-                            <div class="py-2">
-                                <input type="radio" name="rdUserRole" value="@SD.ShopAdminRole" /> @SD.ShopAdminRole
-                                <input type="radio" name="rdUserRole" value="@SD.CoachRole" /> @SD.CoachRole
-                                <input type="radio" name="rdUserRole" value="@SD.MemberRole" /> @SD.MemberRole
-                                <input type="radio" name="rdUserRole" value="@SD.AdminRole" /> @SD.AdminRole
-                            </div>
-                            
-                            <div class="py-2">
-                                <button type="submit" class="btn btn-success form-control">Member Registraion</button>
-                            </div>
-                            <br />
-                           
-                                <p>
-                                    By clicking <em>Register</em> you agree to the club's <a href="" target="_blank"> terms and conditions </a>
-                                </p>
-                             
                             </div>
                         </div>
+
+                        <div class="py-2">
+                            <div>
+                                <input type="text" asp-for="Input.PhoneNumber" autocomplete="off" placeholder="Phone Number: 086 1234567" class="form-control" />
+                                <span asp-validation-for="Input.PhoneNumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="py-2">
+                            <div>
+                                <input type="email" asp-for="Input.Email" autocomplete="off" placeholder="Email" class="form-control" />
+                                <span asp-validation-for="Input.Email" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="py-2">
+                            <div>
+                                <input type="password" asp-for="Input.Password" autocomplete="off" placeholder="Password" class="form-control" />
+                                <span asp-validation-for="Input.Password" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="py-2">
+                            <div>
+                                <input type="password" asp-for="Input.ConfirmPassword " autocomplete="off" placeholder="Please Confirm Password" class="form-control" />
+                                <span asp-validation-for="Input.ConfirmPassword" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div> <h4>Please fill in Player Details</h4></div>
+                        <div class="form-row py-2">
+                            <div class="col">
+                                <div>
+                                    <input type="text" asp-for="Input.FirstNameFamily1" autocomplete="off" placeholder="First Player's First Name " class="form-control" />
+                                    <span asp-validation-for="Input.FirstNameFamily1" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div>
+                                    <input type="text" asp-for="Input.LastNameFamily1" autocomplete="off" placeholder="First Player's Second Name" class="form-control" />
+                                    <span asp-validation-for="Input.LastNameFamily1" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="py-2">
+                            <div>
+                                <input id="datepicker" type="datetime" asp-for="Input.DOBFamily2" autocomplete="off" placeholder="dd-mm-yyyy" class="form-control" />
+                                <span asp-validation-for="Input.DOBFamily1" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="form-row py-2">
+                            <div class="col">
+                                <div>
+                                    <input type="text" asp-for="Input.FirstNameFamily2" autocomplete="off" placeholder="Second Player's First Name" class="form-control" />
+                                    <span asp-validation-for="Input.FirstNameFamily2" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col">
+                                <div>
+                                    <input type="text" asp-for="Input.LastNameFamily2" autocomplete="off" placeholder="Second Player's Second Name" class="form-control" />
+                                    <span asp-validation-for="Input.LastNameFamily2" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="py-2">
+                            <div>
+                                <input id="datepicker" type="datetime" asp-for="Input.DOBFamily2" autocomplete="off" placeholder="dd-mm-yyyy" class="form-control" />
+                                <span asp-validation-for="Input.DOBFamily2" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="py-2">
+                            <input type="radio" name="rdUserRole" value="@SD.ShopAdminRole" /> @SD.ShopAdminRole
+                            <input type="radio" name="rdUserRole" value="@SD.CoachRole" /> @SD.CoachRole
+                            <input type="radio" name="rdUserRole" value="@SD.MemberRole" /> @SD.MemberRole
+                            <input type="radio" name="rdUserRole" value="@SD.AdminRole" /> @SD.AdminRole
+                        </div>
+
+                        <div class="py-2">
+                            <button type="submit" class="btn btn-success form-control">Member Registration</button>
+                        </div>
+                        <br />
+
+                        <p>
+                            By clicking <em>Register</em> you agree to the club's <a href="" target="_blank"> terms and conditions </a>
+                        </p>
+
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-    </form>
-
-
-
-        <h1>@ViewData["Title"]</h1>
+</form>
 
 
-        <div class="row">
-            <div class="col-md-4">
+
+<h1>@ViewData["Title"]</h1>
+
+
+<div class="row">
+    <div class="col-md-4">
+
+    </div>
+    <div class="col-md-6 col-md-offset-2">
+        <section>
+            <h4>Use another service to register.</h4>
+            <hr />
+            @{
+                if ((Model.ExternalLogins?.Count ?? 0) == 0)
+                {
+                    <div>
+                        <p>
+                            There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
+                            for details on setting up this ASP.NET application to support logging in via external services.
+                        </p>
+                    </div>
+                }
+                else
+                {
+                    <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
+                        <div>
+                            <p>
+                                @foreach (var provider in Model.ExternalLogins)
+                                {
+                                    <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
+                                }
+                            </p>
+                        </div>
+                    </form>
+                }
+            }
+        </section>
+    </div>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+
+   
+        <script>
+            $(function () {
+                $("#datepicker").datepicker();
                 
-            </div>
-            <div class="col-md-6 col-md-offset-2">
-                <section>
-                    <h4>Use another service to register.</h4>
-                    <hr />
-                    @{
-                        if ((Model.ExternalLogins?.Count ?? 0) == 0)
-                        {
-                            <div>
-                                <p>
-                                    There are no external authentication services configured. See <a href="https://go.microsoft.com/fwlink/?LinkID=532715">this article</a>
-                                    for details on setting up this ASP.NET application to support logging in via external services.
-                                </p>
-                            </div>
-                        }
-                        else
-                        {
-                            <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
-                                <div>
-                                    <p>
-                                        @foreach (var provider in Model.ExternalLogins)
-                                        {
-                                            <button type="submit" class="btn btn-primary" name="provider" value="@provider.Name" title="Log in using your @provider.DisplayName account">@provider.DisplayName</button>
-                                        }
-                                    </p>
-                                </div>
-                            </form>
-                        }
-                    }
-                </section>
-            </div>
-        </div>
+            });
+            function validateInput() {
+               
+                var dt = document.getElementById("datepicker").value;
+               
+              
+                if (dt.toString() == '') {
+                    swal("Error", "Please select pickup Date", "error");
+                    return false;
+                }
+                
+                return true;
+            }
+        </script>
 
-        @section Scripts {
-            <partial name="_ValidationScriptsPartial" />
-        }
+    }
