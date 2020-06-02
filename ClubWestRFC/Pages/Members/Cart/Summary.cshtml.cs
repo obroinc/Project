@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 using ClubWestRFC.DataAccess.Data.Repository.IRepository;
 using ClubWestRFC.Models;
 using ClubWestRFC.Models.ViewModels;
+using ClubWestRFC.Utility;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Stripe;
 
 namespace ClubWestRFC.Pages.Members.Cart
 {
@@ -56,7 +59,87 @@ namespace ClubWestRFC.Pages.Members.Cart
 
         }
 
+
+
+        public IActionResult OnPost(string stripeToken)
+        {
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
+
+            detailsCart.listCart = _unitofWork.ShoppingCart.GetAll(c => c.ApplicationUserId == claim.Value).ToList();
+
+            detailsCart.OrderHeader.PaymentStatus = SD.PaymentStatusPending;
+            detailsCart.OrderHeader.OrderDate = DateTime.Now;
+            detailsCart.OrderHeader.UserId = claim.Value;
+            detailsCart.OrderHeader.Status = SD.PaymentStatusPending;
+            detailsCart.OrderHeader.PickUpTime = Convert.ToDateTime(detailsCart.OrderHeader.PickUpDate.ToShortDateString() + " " + detailsCart.OrderHeader.PickUpTime.ToShortTimeString());
+
+            List<OrderDetails> orderDetailsList = new List<OrderDetails>();
+            _unitofWork.OrderHeader.Add(detailsCart.OrderHeader);
+            _unitofWork.Save();
+
+            foreach (var item in detailsCart.listCart)
+            {
+                item.Memberprice = _unitofWork.Memberprice.GetFirstOrDefault(m => m.Id == item.MemberpriceId);
+                OrderDetails orderDetails = new OrderDetails
+                {
+                    MemberpriceId = item.MemberpriceId,
+                    OrderId = detailsCart.OrderHeader.Id,
+                    Description = item.Memberprice.Description,
+                    Price = item.Memberprice.Price,
+                    Count = item.Count
+                };
+                detailsCart.OrderHeader.OrderTotal += (orderDetails.Count * orderDetails.Price);
+                _unitofWork.OrderDetails.Add(orderDetails);
+
+            }
+            detailsCart.OrderHeader.OrderTotal = Convert.ToDouble(String.Format("{0:.##}", detailsCart.OrderHeader.OrderTotal));
+            _unitofWork.ShoppingCart.RemoveRange(detailsCart.listCart);
+            HttpContext.Session.SetInt32(SD.ShoppingCart, 0);
+            _unitofWork.Save();
+
+            if (stripeToken != null)
+            {
+
+                var options = new ChargeCreateOptions
+                {
+                    //Amount is in cents
+                    Amount = Convert.ToInt32(detailsCart.OrderHeader.OrderTotal * 100),
+                    Currency = "eur",
+                    Description = "Order ID : " + detailsCart.OrderHeader.Id,
+                    Source = stripeToken
+                };
+                var service = new ChargeService();
+                Charge charge = service.Create(options);
+
+                detailsCart.OrderHeader.TransactionId = charge.Id;
+
+                if (charge.Status.ToLower() == "succeeded")
+                {
+                    //email 
+                    detailsCart.OrderHeader.PaymentStatus = SD.PaymentStatusApproved;
+                    detailsCart.OrderHeader.Status = SD.StatusSubmitted;
+                }
+                else
+                {
+                    detailsCart.OrderHeader.PaymentStatus = SD.PaymentStatusRejected;
+                }
+            }
+            else
+            {
+                detailsCart.OrderHeader.PaymentStatus = SD.PaymentStatusRejected;
+            }
+            _unitofWork.Save();
+
+            return RedirectToPage("/Members/Cart/OrderConfirmation", new { id = detailsCart.OrderHeader.Id });
+
+        }
+
+
+
     }
 
-    
+
 }
+
+    

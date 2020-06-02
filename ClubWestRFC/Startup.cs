@@ -17,6 +17,7 @@ using ClubWestRFC.DataAccess.Data.Repository;
 using ClubWestRFC.DataAccess.Data.Repository.IRepository;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using ClubWestRFC.Utility;
+using Stripe;
 
 namespace ClubWestRFC
 {
@@ -63,7 +64,9 @@ namespace ClubWestRFC
                 options.Cookie.IsEssential = true;
             });
 
-            
+            services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
+
+
             //added MVC and disables endpoints
             services.AddMvc(options=>options.EnableEndpointRouting = false)
                 .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
@@ -123,6 +126,7 @@ namespace ClubWestRFC
 
             //Add MVC (both MVC and razor pages)
             app.UseMvc();
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["Secretkey"];
 
             /*
              * Remove endpoints code

@@ -1,5 +1,8 @@
 ﻿@page
 @model ClubWestRFC.Pages.Members.Cart.SummaryModel
+@inject IOptions<ClubWestRFC.Utility.StripeSettings> Stripe
+@using  Microsoft.Extensions.Options
+
 @{
     ViewData["Title"] = "Summary";
 }
@@ -108,6 +111,25 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-12 col-md-4 offset-md-8">
+
+                                @{
+                                    var OrderTotalForStripe = Model.detailsCart.OrderHeader.OrderTotal * 100;
+                                }
+                                <script src="https://checkout.stripe.com/checkout.js"
+                                        class="stripe-button"
+                                        data-key="@Stripe.Value.Publishablekey"
+                                        data-amount="@OrderTotalForStripe"
+                                        data-name="ClubWest RFC"
+                                        data-label="Place Order"
+                                        data-description="Be the best you can be"
+                                        data-locale="auto"
+                                        data-allow-remember-me="false"
+                                        data-image="https://stripe.com/img/documentation/checkout/marketplace.png">
+                                </script>
+
+                                <script>document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';</script>
+
+
                                 <button type="submit" value="Place Order" class="btn btn-success form-control">Place Order</button>
                             </div>
                         </div>
@@ -132,6 +154,7 @@
             swal("Error", "Please select pickup Date", "error");
             return false;
         }
+        /*
         if (time.toString() == '') {
             swal("Error", "Please select pickup Time", "error");
             return false;
@@ -140,10 +163,11 @@
             swal("Error", "Please enter picup Name", "error");
             return false;
         }
+        }*/
         if (phone.toString() == '') {
             swal("Error", "Please enter Phone Number", "error");
             return false;
-        }
+        
         return true;
     }
     </script>
