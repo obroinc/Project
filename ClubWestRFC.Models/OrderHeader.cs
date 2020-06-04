@@ -17,19 +17,19 @@ namespace ClubWestRFC.Models
         [ForeignKey("UserId")]
         public virtual ApplicationUser ApplicationUser { get; set; }
 
-        [Required]
+       [Required]
         public DateTime OrderDate { get; set; }
 
         [Required]
         [DisplayFormat(DataFormatString = "{0:C}")]
-        [Display(Name = "Total Membership due")]
+        [Display(Name = "Total due")]
         public double OrderTotal { get; set; }
 
         [Required]
         [Display(Name = "Time for collecting Club Merchadise")]
         public DateTime PickUpTime { get; set; }
 
-        [Required]
+       [Required]
         [NotMapped]
         [Display(Name = "Date for collecting Club Merchadise")]
         public DateTime PickUpDate { get; set; }

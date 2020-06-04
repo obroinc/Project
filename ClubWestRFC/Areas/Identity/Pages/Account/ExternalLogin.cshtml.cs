@@ -23,17 +23,20 @@ namespace ClubWestRFC.Areas.Identity.Pages.Account
         private readonly UserManager<IdentityUser> _userManager;
         private readonly IEmailSender _emailSender;
         private readonly ILogger<ExternalLoginModel> _logger;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public ExternalLoginModel(
             SignInManager<IdentityUser> signInManager,
             UserManager<IdentityUser> userManager,
             ILogger<ExternalLoginModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            RoleManager<IdentityRole> roleManager)
         {
             _signInManager = signInManager;
             _userManager = userManager;
             _logger = logger;
             _emailSender = emailSender;
+            _roleManager = roleManager;
         }
 
         [BindProperty]
@@ -51,6 +54,48 @@ namespace ClubWestRFC.Areas.Identity.Pages.Account
             [Required]
             [EmailAddress]
             public string Email { get; set; }
+            [Required]
+            [Display(Name = "First Name")]
+            public string FirstName { get; set; }
+
+            [Required]
+            [Display(Name = "Second Name")]
+            public string LastName { get; set; }
+
+            [Required]
+            [Display(Name = "Please fill in Phone number to allow club to communicate via Whats app groups")]
+            [RegularExpression(@"^([\+][0-9]{1,3}([ \.\-])?)?([\(]{1}[0-9]{3}[\)])?([0-9A-Z \.\-]{1,32})((x|ext|extension)?[0-9]{1,4}?)$",
+                ErrorMessage = "Not a correct phone number")]
+            public string PhoneNumber { get; set; }
+
+            [Display(Name = "Player 1 First Name")]
+            public string FirstNameFamily1 { get; set; }
+            [Display(Name = "Player  1 Second Name")]
+            public string LastNameFamily1 { get; set; }
+
+            [Display(Name = "If a player please enter DOB")]
+            [DataType(DataType.Date)]
+            [DisplayFormat(DataFormatString = "{0:dd-mm-yy}", ApplyFormatInEditMode = true)]
+            public DateTime? DOBFamily1 { get; set; }
+
+
+
+
+            //Additional Family members 2 of 2
+
+            [Display(Name = "Player 2 First Name")]
+            public string FirstNameFamily2 { get; set; }
+            [Display(Name = "Player 2 First Name")]
+            public string LastNameFamily2 { get; set; }
+
+            [Display(Name = "If a player please enter DOB")]
+            [DataType(DataType.Date)]
+            [DisplayFormat(DataFormatString = "{0:dd-mm-yy}", ApplyFormatInEditMode = true)]
+            public DateTime? DOBFamily2 { get; set; }
+
+
+
+
         }
 
         public IActionResult OnGetAsync()
@@ -99,9 +144,14 @@ namespace ClubWestRFC.Areas.Identity.Pages.Account
                 ProviderDisplayName = info.ProviderDisplayName;
                 if (info.Principal.HasClaim(c => c.Type == ClaimTypes.Email))
                 {
+                    //populates the facebook first and last names from user db
+                    string[] fullName = info.Principal.FindFirstValue(ClaimTypes.Name).Split(' ');
+
                     Input = new InputModel
                     {
-                        Email = info.Principal.FindFirstValue(ClaimTypes.Email)
+                        Email = info.Principal.FindFirstValue(ClaimTypes.Email),
+                       FirstName=fullName[0],
+                       LastName=fullName[1]
                     };
                 }
                 return Page();

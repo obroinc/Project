@@ -22,7 +22,9 @@ namespace ClubWestRFC.Pages.Members.Cart
         {
             _unitofWork = unitofWork;
         }
+
         [BindProperty]
+
         public OrderDetailsCart detailsCart  { get; set; }
 
         //add properties for OdercartDetailsVM
@@ -81,18 +83,22 @@ namespace ClubWestRFC.Pages.Members.Cart
             foreach (var item in detailsCart.listCart)
             {
                 item.Memberprice = _unitofWork.Memberprice.GetFirstOrDefault(m => m.Id == item.MemberpriceId);
+               
                 OrderDetails orderDetails = new OrderDetails
                 {
                     MemberpriceId = item.MemberpriceId,
                     OrderId = detailsCart.OrderHeader.Id,
                     Description = item.Memberprice.Description,
+                    Name=item.Memberprice.Name,
                     Price = item.Memberprice.Price,
                     Count = item.Count
                 };
+
                 detailsCart.OrderHeader.OrderTotal += (orderDetails.Count * orderDetails.Price);
                 _unitofWork.OrderDetails.Add(orderDetails);
 
             }
+
             detailsCart.OrderHeader.OrderTotal = Convert.ToDouble(String.Format("{0:.##}", detailsCart.OrderHeader.OrderTotal));
             _unitofWork.ShoppingCart.RemoveRange(detailsCart.listCart);
             HttpContext.Session.SetInt32(SD.ShoppingCart, 0);
@@ -103,7 +109,7 @@ namespace ClubWestRFC.Pages.Members.Cart
 
                 var options = new ChargeCreateOptions
                 {
-                    //Amount is in cents
+                    //Amount is in cents so multiply by 100
                     Amount = Convert.ToInt32(detailsCart.OrderHeader.OrderTotal * 100),
                     Currency = "eur",
                     Description = "Order ID : " + detailsCart.OrderHeader.Id,
