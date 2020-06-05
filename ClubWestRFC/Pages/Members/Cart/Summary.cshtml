@@ -54,19 +54,19 @@
 
                                     <div class="row my-1">
                                         <div class="col-3">
-                                            <label>Date if collecting from Club Shop</label>
+                                            <label>Confirm Date</label>
                                         </div>
                                         <div class="col-9">
-                                            <input id="datepicker" asp-for="@Model.detailsCart.OrderHeader.PickUpDate" type="text" class="form-control" />
+                                            <input id="datepicker" value="" asp-for="@Model.detailsCart.OrderHeader.PickUpDate" type="text" class="form-control" />
                                         </div>
                                     </div>
 
                                     <div class="row my-1">
                                         <div class="col-3">
-                                            <label>Pick up time from Club Shop</label>
+                                            <label>Confirm Time </label>
                                         </div>
                                         <div class="col-9">
-                                            <input id="timepicker" asp-for="@Model.detailsCart.OrderHeader.PickUpTime" type="text" class="form-control" />
+                                            <input id="timepicker" value="" asp-for="@Model.detailsCart.OrderHeader.PickUpTime" type="text" class="form-control" />
                                         </div>
                                     </div>
 
@@ -126,11 +126,11 @@
                                         data-allow-remember-me="false"
                                         data-image="https://stripe.com/img/documentation/checkout/marketplace.png">
                                 </script>
-
+                                @*Sops button provided by stripe from displaying*@
                                 <script>document.getElementsByClassName("stripe-button-el")[0].style.display = 'none';</script>
 
 
-                                <button type="submit" value="Place Order" class="btn btn-success form-control">Place Order</button>
+                                <button type="submit" id="btnPlaceOrder" onclick="return validateInput()" value="Place Order" class="btn btn-success form-control">Place Order</button>
                             </div>
                         </div>
                     </div>
@@ -139,38 +139,35 @@
         </div>
     }
 </form>
+
 @section Scripts{
     <script>
-    $(function () {
-        $("#datepicker").datepicker({ minDate: 1, maxDate: "+1W" });
-        $("#timepicker").timepicker({ 'minTime': '10:00 AM', 'maxTime': '4:00 PM', step: '30' });
-    });
-    function validateInput() {
-        var time = document.getElementById("timepicker").value;
-        var dt = document.getElementById("datepicker").value;
-        var name = document.getElementById("txtName").value;
-        var phone = document.getElementById("txtPhone").value;
-        
-        if (dt.toString() == '') {
-            swal("Error", "Please select pickup Date if from Club Shop", "error");
-            return false;
+        $(function () {
+            $("#datepicker").datepicker({ minDate: 1, maxDate: "+2W" });
+            $("#timepicker").timepicker({ 'minTime': '11:00 AM', 'maxTime': '9:00 PM', step: '30' });
+        });
+        function validateInput() {
+            var time = document.getElementById("timepicker").value;
+            var dt = document.getElementById("datepicker").value;
+            var name = document.getElementById("txtName").value;
+            var phone = document.getElementById("txtPhone").value;
+            if (dt.toString() == '') {
+                swal("Error", "Please Confirm Date", "error");
+                return false;
+            }
+            if (time.toString() == '') {
+                swal("Error", "Please Confirm Time", "error");
+                return false;
+            }
+            if (name.toString() == '') {
+                swal("Error", "Please enter picup Name", "error");
+                return false;
+            }
+            if (phone.toString() == '') {
+                swal("Error", "Please enter Phone Number", "error");
+                return false;
+            }
+            return true;
         }
-        
-        if (time.toString() == '') {
-            swal("Error", "Please select pickup Time if Club Shop", "error");
-            return false;
-        
-        }
-        if (phone.toString() == '') {
-            swal("Error", "Please enter Phone Number", "error");
-            return false;
-        }
-        }
-        if (name.toString() == '') {
-            swal("Error", "Please enter your Name", "error");
-            return false;
-        }
-        return true;
-    }
     </script>
 }

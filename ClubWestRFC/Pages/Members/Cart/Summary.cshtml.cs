@@ -54,6 +54,7 @@ namespace ClubWestRFC.Pages.Members.Cart
             }
 
             ApplicationUser applicationUser = _unitofWork.ApplicationUser.GetFirstOrDefault(c => c.Id == claim.Value);
+
             detailsCart.OrderHeader.PickupName = applicationUser.FullName;
             detailsCart.OrderHeader.PickUpTime = DateTime.Now;
             detailsCart.OrderHeader.PhoneNumber = applicationUser.PhoneNumber;

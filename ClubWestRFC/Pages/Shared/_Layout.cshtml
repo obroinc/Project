@@ -69,7 +69,20 @@
 
                             </li>
                         }
-
+                        
+                        @*lets admin and shop admin access only*@
+                        @if (User.IsInRole(SD.AdminRole) || User.IsInRole(SD.ShopAdminRole))
+                        {
+                            <li class="nav-link">
+                                <a class="nav-link text-white" asp-page="/Admin/Order/ManagerOrder">Mangage Order</a>
+                            </li>
+                        }
+                        @if (User.IsInRole(SD.AdminRole) || User.IsInRole(SD.ShopAdminRole))
+                        {
+                            <li class="nav-link">
+                                <a class="nav-link text-white" asp-page="/Admin/Order/OrderList">Order Pickup</a>
+                            </li>
+                        }
                         @*Shopping Trollry icon, terive the cout if it is not null *@
 
                         @if (HttpContextAccessor.HttpContext.Session.GetInt32(SD.ShoppingCart) != null)

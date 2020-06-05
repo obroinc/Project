@@ -16,7 +16,7 @@ namespace ClubWestRFC.Models
         public virtual OrderHeader OrderHeader { get; set; }
 
 
-        //to keep the price the same when member  placed an reder, if membership prices change
+        //to keep the price the same when member  placed an oreder, if membership prices change
         [Required]
         public int MemberpriceId { get; set; }
         [ForeignKey("MemberpriceId")]
