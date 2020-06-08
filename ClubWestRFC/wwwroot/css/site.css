@@ -288,3 +288,36 @@ body {
     width: 210px !important;
     margin: 0 auto;
 }
+/*Styling on home page*/
+/*Weather webservice styling*/
+.weather-container {
+    background-color: gainsboro;
+    box-shadow: 5px 10px #888888;
+    padding: 2px;
+    border-radius: 15px;
+    padding: 1px;
+    text-align: center;
+    margin: 3px;
+    height: 100px;
+    width: 300px;
+}
+.weather{
+    font-size:22px;
+    margin:0;
+}
+
+.temp {
+    font-size: 60px;
+    margin: 0;
+    font-weight:bold;
+}
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+#map {
+    width: 350px;
+    height: 300px;
+    margin: 2px;
+    text-align: center;
+    border:solid 2px solid red;
+}

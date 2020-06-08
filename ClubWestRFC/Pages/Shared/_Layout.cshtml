@@ -11,6 +11,10 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
+
+   
+
+
     @*Addional 3rd party addons*@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
 
@@ -49,7 +53,7 @@
                             <a class="nav-link text-white" asp-area="" asp-page="/Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-white" asp-area="" asp-page="/Members/Home/Index">Membership & Club Shop</a>
+                            <a class="nav-link text-white" asp-area="" asp-page="/Members/Home/Index">Membership/Shop</a>
                         </li>
                         @*Adding Admin drop down list,  only available if Admin*@
                         @if (User.IsInRole(SD.AdminRole))
@@ -69,12 +73,12 @@
 
                             </li>
                         }
-                        
+
                         @*lets admin and shop admin access only*@
                         @if (User.IsInRole(SD.AdminRole) || User.IsInRole(SD.ShopAdminRole))
                         {
                             <li class="nav-link">
-                                <a class="nav-link text-white" asp-page="/Admin/Order/ManagerOrder">Mangage Order</a>
+                                <a class="nav-link text-white" asp-page="/Admin/Order/ManagerOrder">Manage Order</a>
                             </li>
                         }
                         @if (User.IsInRole(SD.AdminRole) || User.IsInRole(SD.ShopAdminRole))
@@ -148,9 +152,17 @@
 
     </footer>
 
+ 
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+
+      
+
+
 
     @*Additional Third party js*@
     <script src="https://kit.fontawesome.com/61af51e2e3.js" crossorigin="anonymous"></script>

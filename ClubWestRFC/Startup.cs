@@ -18,6 +18,7 @@ using ClubWestRFC.DataAccess.Data.Repository.IRepository;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using ClubWestRFC.Utility;
 using Stripe;
+using ClubWestRFC.DataAccess.Data.Initializer;
 
 namespace ClubWestRFC
 {
@@ -54,6 +55,9 @@ namespace ClubWestRFC
             //adding Iunitof and Unit of work to project so it can used by contollers
             services.AddScoped<IUnitofWork, UnitofWork>();
 
+            //adding role DbIniatialzer
+            services.AddScoped<IDbInitializer, DbInitializer>();
+
 
             //Adding sesion for storing shopping cart items, timespout after 10 minutes
 
@@ -66,10 +70,11 @@ namespace ClubWestRFC
 
             services.Configure<StripeSettings>(Configuration.GetSection("Stripe"));
 
+            services.AddRazorPages();
 
             //added MVC and disables endpoints
-            services.AddMvc(options=>options.EnableEndpointRouting = false)
-                .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
+           // services.AddMvc(options=>options.EnableEndpointRouting = false)
+          //      .SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_3_0);
 
 
 
@@ -118,7 +123,7 @@ namespace ClubWestRFC
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, IDbInitializer dbInitializer)
         {
             if (env.IsDevelopment())
             {
@@ -135,26 +140,30 @@ namespace ClubWestRFC
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseSession();
+            dbInitializer.Initialize();
 
             //NOT needed
-            //app.UseRouting();
+            app.UseRouting();
 
             app.UseAuthentication();
             app.UseAuthorization();
 
 
-            //Add MVC (both MVC and razor pages)
-            app.UseMvc();
-            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["Secretkey"];
 
-            /*
-             * Remove endpoints code
-             * 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapControllers();
                 endpoints.MapRazorPages();
+
             });
-            */
+
+            //Add MVC (both MVC and razor pages)
+            //app.UseMvc();
+            StripeConfiguration.ApiKey = Configuration.GetSection("Stripe")["Secretkey"];
+
+            
+            
+            
         }
     }
 }

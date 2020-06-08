@@ -21,7 +21,16 @@
                     <form method="post" autocomplete="off" asp-route-returnUrl="@Model.ReturnUrl">
 
                         <h3 class="col-12 text-success text-center py-4">
-                            <strong>Sign Up</strong>
+                            
+                            @if (User.IsInRole(SD.AdminRole))
+                            {
+                            <strong>Create a new Member</strong>
+                            }
+                            else
+                            {
+                        <strong>Sign Up</strong>
+                            }
+                            
                         </h3>
                         <br />
 
@@ -86,12 +95,12 @@
 
                         <div class="py-2">
                             <div>
-                                <input id="datepicker" type="datetime" asp-for="Input.DOBFamily2" autocomplete="off" placeholder="dd-mm-yyyy" class="form-control" />
+                                <input id="datepicker" type="datetime" asp-for="Input.DOBFamily1" autocomplete="off" placeholder="dd-mm-yyyy" class="form-control" />
                                 <span asp-validation-for="Input.DOBFamily1" class="text-danger"></span>
                             </div>
 
                         </div>
-
+@*
                         <div class="form-row py-2">
                             <div class="col">
                                 <div>
@@ -114,24 +123,25 @@
                                 <span asp-validation-for="Input.DOBFamily2" class="text-danger"></span>
                             </div>
                         </div>
-
+     *@
+                        @*Prevents radio buttons seen unless you are the admin*@
+                        @if(User.IsInRole(SD.AdminRole) ){ 
                         <div class="py-2">
                             <input type="radio" name="rdUserRole" value="@SD.ShopAdminRole" /> @SD.ShopAdminRole
-                            <input type="radio" name="rdUserRole" value="@SD.CoachRole" /> @SD.CoachRole
                             <input type="radio" name="rdUserRole" value="@SD.MemberRole" /> @SD.MemberRole
                             <input type="radio" name="rdUserRole" value="@SD.AdminRole" /> @SD.AdminRole
                         </div>
-
+                        }
                         <div class="py-2">
                             <button type="submit" class="btn btn-success form-control">Member Registration</button>
                         </div>
-
+                        
                     </form>
 
-                    @*
-        @if (!User.IsInRole(SD.ManagerRole))
+                    
+        @if (!User.IsInRole(SD.AdminRole))
         {
-                    *@
+                    
                     <form id="external-account" asp-page="./ExternalLogin" asp-route-returnUrl="@Model.ReturnUrl" method="post" class="form-horizontal">
                         <p>
                             By clicking <em>Register</em> you agree to our <a href="" target="_blank"> terms of service </a>
@@ -161,7 +171,7 @@
                             }
                         </div>
                     </form>
-                    @*}*@
+                    }
 
                 </div>
 

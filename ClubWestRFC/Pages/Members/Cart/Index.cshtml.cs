@@ -38,7 +38,7 @@ namespace ClubWestRFC.Pages.Members.Cart
             //RETRIVING the shoppig cart of the user from the database , need Id of user
             var claimsIdentity = (ClaimsIdentity)User.Identity;
             var claim = claimsIdentity.FindFirst(ClaimTypes.NameIdentifier);
-
+            //user user has not loggeg in then this calim value will be null, so to check it
             if (claim != null)
             {
                 //reteriving items from shopping cart

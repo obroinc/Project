@@ -88,7 +88,7 @@ namespace ClubWestRFC.Areas.Identity.Pages.Account
 
             [Display(Name = "If a player please enter DOB")]
             [DataType(DataType.Date)]
-            [DisplayFormat(DataFormatString = "{0:dd-mm-yy}", ApplyFormatInEditMode = true)]
+           [DisplayFormat(DataFormatString = "{0:dd-mm-yy}", ApplyFormatInEditMode = true)]
             public DateTime? DOBFamily1 { get; set; }
 
             //[Display(Name = "What team would they wish to play on?")]
@@ -104,7 +104,7 @@ namespace ClubWestRFC.Areas.Identity.Pages.Account
 
             [Display(Name = "If a player please enter DOB")]
             [DataType(DataType.Date)]
-            [DisplayFormat(DataFormatString = "{0:dd-mm-yy}", ApplyFormatInEditMode = true)]
+          //  [DisplayFormat(DataFormatString = "{0:dd-mm-yy}", ApplyFormatInEditMode = true)]
             public DateTime? DOBFamily2 { get; set; }
 
             //[Display(Name = "What team would they wish to play on?")]
