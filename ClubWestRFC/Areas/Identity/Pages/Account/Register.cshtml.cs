@@ -186,6 +186,8 @@ namespace ClubWestRFC.Areas.Identity.Pages.Account
                             else
                             {
                                 await _userManager.AddToRoleAsync(user, SD.MemberRole);
+                                await _signInManager.SignInAsync(user, isPersistent: false);
+                                return LocalRedirect(returnUrl);
                             }
                         }
                     }

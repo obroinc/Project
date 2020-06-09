@@ -3077,7 +3077,10 @@
         },
         "runtime": {
           "bin/placeholder/ClubWestRFC.Utility.dll": {}
-        }
+        },
+        "frameworkReferences": [
+          "Microsoft.AspNetCore.App"
+        ]
       }
     }
   },

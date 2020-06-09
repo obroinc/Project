@@ -7,13 +7,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - ClubWestRFC  </title>
+    <title>@ViewData["Title"] - ClubWest RFC  </title>
+
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" />
 
-
-   
-
+    @**@
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     @*Addional 3rd party addons*@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" />
@@ -44,6 +44,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
+
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
 
                     <partial name="_LoginPartial" />
@@ -78,7 +79,7 @@
                         @if (User.IsInRole(SD.AdminRole) || User.IsInRole(SD.ShopAdminRole))
                         {
                             <li class="nav-link">
-                                <a class="nav-link text-white" asp-page="/Admin/Order/ManagerOrder">Manage Order</a>
+                                <a class="nav-link text-white" asp-page="/Admin/Order/ManageOrder">Manage Order</a>
                             </li>
                         }
                         @if (User.IsInRole(SD.AdminRole) || User.IsInRole(SD.ShopAdminRole))
@@ -133,17 +134,31 @@
     <footer class="border-top footer text-white bg-primary">
         <table>
             <tr>
-                <td><div class="container">   &copy; 2020  <img src="~/Images/favicon-32x32.png" /> ClubWest RFC</div></td>
+                <td><div class="container">&copy; 2020  <img src="~/Images/favicon-32x32.png" /> ClubWest RFC</div></td>
                 <td>
                     <a style="text-align:right" href="#" class="nav-link text-white -50">
                         <i class="fab fa-facebook-square"></i>
                     </a>
                 </td>
                 <td>
-                    <a style="text-align:right" href="#" class="nav-link text-white -50">
+                    <a style="text-align:right; font-size:large" href="#" class="nav-link text-white -50">
                         <i class="fab fa-twitter-square"></i>
                     </a>
                 </td>
+                <td>
+                    <a style="text-align:right" href="#" class="nav-link text-white -50">
+                        <i class="fa fa-envelope-o" aria-hidden="true"></i>
+                    </a>
+                </td>
+                <td>
+                </td>
+
+                <td>
+                    <a style="text-align:right" href="#" class="nav-link text-white -50">
+                        <i class="fa fa-address-card-o" aria-hidden="true">  ClubWest RFC, Downtown, Landsdown </i>
+                    </a>
+                </td>
+
             </tr>
 
         </table>
@@ -152,15 +167,16 @@
 
     </footer>
 
- 
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+
 
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
-
-      
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCuF6b-YME2jHlcfjcN5CWj8QXODaav1t4&callback=initMap"
+            async defer></script>
 
 
 
