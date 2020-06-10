@@ -165,7 +165,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    opacity: 0.5;
+    opacity: 0.1;
 }
 
 
@@ -325,4 +325,13 @@ body {
 .map {
   padding-top:2px;
  
+}
+.pic {
+    width: 250px;
+    height: 220px;
+    padding: 2px;
+    border-radius: 15px;
+    padding: 1px;
+    text-align: center;
+    margin: 1px;
 }
