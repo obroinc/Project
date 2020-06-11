@@ -129,6 +129,7 @@ html {
 
 body {
     /* Margin bottom by footer height */
+   
     margin-bottom: 60px;
 }
 
@@ -143,7 +144,11 @@ body {
 
 
 .search-background {
-    background: url('/images/dust_scratches.png');
+    background: url('../Images/BackgoroundImage/grey.png');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    opacity: 0.1;
 }
 
 
@@ -160,7 +165,7 @@ body {
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
-    opacity: 0.5;
+    opacity: 0.1;
 }
 
 
@@ -287,4 +292,46 @@ body {
 .form-signup .social-login {
     width: 210px !important;
     margin: 0 auto;
+}
+/*Styling on home page*/
+/*Weather webservice styling*/
+.weather-container {
+    background-color:aliceblue;
+    box-shadow: 1px 1px #888888;
+    padding: 2px;
+    border-radius: 15px;
+    padding: 1px;
+    text-align: center;
+    margin: 1px;
+    height: 120px;
+    width: 250px;
+}
+.weather{
+    font-size:22px;
+    margin:0;
+}
+
+.temp {
+    font-size: 22px;
+    margin: 0;
+    font-size: 22px;
+}
+.tempsize{
+
+}
+
+/* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+.map {
+  padding-top:2px;
+ 
+}
+.pic {
+    width: 250px;
+    height: 220px;
+    padding: 2px;
+    border-radius: 15px;
+    padding: 1px;
+    text-align: center;
+    margin: 1px;
 }

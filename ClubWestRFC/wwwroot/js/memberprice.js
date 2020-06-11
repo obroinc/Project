@@ -21,7 +21,7 @@ function loadList() {
                 "render": function (data)
                 {
                     return ` <div class="text-center">
-                                <a href="/Admin/memberprice/upsert?id=${data}" class="btn btn-success text-white" style="cussor:pointer; width:100px;">
+                                <a href="/Admin/Memberpricing/upsert?id=${data}" class="btn btn-success text-white" style="cussor:pointer; width:100px;">
                                     <i class="far fa-edit"></i> Edit
                                 </a>
                                 <a class="btn btn-danger text-white" style="cursor:pointer; width:100px;" onclick=Delete('/api/memberprice/'+${data})>

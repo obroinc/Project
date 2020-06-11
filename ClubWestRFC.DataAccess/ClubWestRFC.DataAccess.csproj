@@ -13,10 +13,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Initializer\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ClubWestRFC.Models\ClubWestRFC.Models.csproj" />
     <ProjectReference Include="..\ClubWestRFC.Utility\ClubWestRFC.Utility.csproj" />
   </ItemGroup>

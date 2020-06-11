@@ -3,29 +3,118 @@
 @{
     ViewData["Title"] = "Home page";
 }
+   
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to ClubWest RFC </h1>
-
-</div>
-<div class="container">
-    <div class="row">
-        <div class="col-sm">
-            <p>
-                The club boasts excellent facilities including: 3 full size rugby pitches
-                plus separate designated training area, 8 dressing-rooms plus separate
-                changing area for match officials, 650 seater stand with media sector and
-                wheelchair access, 200 vehicle car park, Covered terracing, TV quality
-                flood-lighting on main pitch, Match quality flood-lighting on second
-                pitch and training area
-            </p>
+        <div class="text-left">
+            <h1 class="display-5">Welcome to ClubWest RFC </h1>
 
         </div>
-        <div class="col-sm">
-            One of three columns
+        <div class="container">
+
+            <div class="row">
+                <div class="col-sm-9">
+
+                    <p>
+                        The club boasts excellent facilities including: 3 full size rugby pitches
+
+                        plus separate designated training area, 8 dressing-rooms plus separate
+
+                        changing area for match officials,  200 vehicle car park, Covered terracing,
+
+                        TV quality flood-lighting on main pitch, Match quality flood-lighting on second
+
+                        pitch and training area
+                    </p>
+                    <div class="text-center" >
+                        <img class="pic" src="~/Images/membertypes/bdecba4f-1976-44a4-b30e-9c7e1e3c0a98.jpg" />
+                        <img class="pic" src="~/Images/membertypes/49358a20-ede6-43dd-9fe4-7c9823ae1094.jpg" />
+                    </div>
+                </div>
+
+                <div class="col-sm-3">
+                    <div class="weather-container">
+
+                        <div> <img class="icon" /> <p class="weather"></p></div>
+                        <div class="tempsize"><span class="temp"></span>&deg;C</div>
+                    </div>
+
+                    <div class="map">
+
+                        <p style="text-align:center">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d18839.848668764247!2d-9.321051784594559!3d53.82541234642053!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4859675934fdd929%3A0xc420e89f76d238b0!2sCastlebar%20Rugby%20Football%20Club!5e0!3m2!1sen!2sie!4v1591548609896!5m2!1sen!2sie"
+                                    width="250" height="220" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+                        </p>
+
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="col-sm">
-            One of three columns happiness
-        </div>
-    </div>
-</div>
+  @*  
+
+<script>
+
+    $(document).ready(function () {
+
+
+        var map;
+        function initMap() {
+            var RFC = { lat: 53.85, lng: - 9.3 };
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 10,
+                center: RFC
+            });
+            var contentString = '<div id="content">' +
+                '<div id="siteNotice">' +
+                '</div>' +
+                '<h2 id="firstHeading" class="firstHeading">ClubWest RFC</h2>' +
+                '<div id="bodyContent">' +
+                '<p><b>ClubWest RFC</b>, Be the best you can be</p>' +
+                '<p>Email: <a href="#" > <span class="glyphicon glyphicon-envelope"></span></a>" </p>' +
+                '</div>' +
+                '</div>';
+            var infowindow = new google.maps.InfoWindow({
+                content: contentString
+            });
+            var marker = new google.maps.Marker({
+                position: RFC,
+                map: map,
+                title: 'ClubWest RFC'
+            });
+            marker.addListener('click', function () {
+                infowindow.open(map, marker);
+            });
+        }
+    });
+
+</script>
+
+      *@
+
+
+@*End of Google Maps*@
+<script>
+
+    $(document).ready(function () {
+
+        $.get("https://api.openweathermap.org/data/2.5/weather?q=castlebar&units=metric&appid=2fa6123cf4b9294239a28ef16033c218",
+
+            function (data) {
+
+                console.log(data);
+
+                var icon = "https://api.openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+
+                var temp = Math.floor(data.main.temp);
+                var weather = data.weather[0].main;
+
+
+                $(".icon").attr("src", icon);
+                $(".weather").append(weather);
+                $(".temp").append(temp);
+
+
+            });
+
+    });
+
+</script>

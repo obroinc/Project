@@ -5,12 +5,17 @@ using System.Linq;
 using System.Threading.Tasks;
 using ClubWestRFC.DataAccess.Data.Repository.IRepository;
 using ClubWestRFC.Models.ViewModels;
+using ClubWestRFC.Utility;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace ClubWestRFC.Pages.Admin.MemberPricing
 {
+    //Authorise Admin to have access to this page only
+    [Authorize(Roles = SD.AdminRole)]
+
     public class UpsertModel : PageModel
     {
         private readonly IUnitofWork _unitofWork;
