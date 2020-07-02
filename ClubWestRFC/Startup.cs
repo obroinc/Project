@@ -87,16 +87,16 @@ namespace ClubWestRFC
 
             services.AddAuthentication().AddFacebook(facebookOptions =>
             { 
-            facebookOptions.AppId= "772268536850478";
-                facebookOptions.AppSecret = "c5375d47b5ea7cc4927fe8206c237e93";
+            facebookOptions.AppId= "#";
+                facebookOptions.AppSecret = "#";
             });
 
             //to be able to use microsoft as a login
 
             services.AddAuthentication().AddMicrosoftAccount(options =>
             {
-                options.ClientId = "a7b6b0a8-be1e-4c82-a5d4-75a3e5812282";
-                options.ClientSecret = "BB077E4H-E3yhb.C.~LnWTX~TPNq1~Ch9A";
+                options.ClientId = "#";
+                options.ClientSecret = "#";
             });
             //Remove Razor pages Added RazorRunTimeCompliation
             //services.AddRazorPages().AddRazorRuntimeCompilation();
